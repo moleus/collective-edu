@@ -1,0 +1,189 @@
+## Problem html block
+```html
+<div class="problem-progress" id="block-v1:ITMOUniversity+IOT+fall_2023_ITMO_bac+type@problem+block@e5f6d3d292a5acc34c60-problem-progress"></div>
+<div class="problem">
+<div>
+<div class="wrapper-problem-response" tabindex="-1" aria-label="Question 1" role="group"><div class="choicegroup capa_inputtype" id="inputtype_e5f6d3d292a5acc34c60_2_1">
+    <fieldset aria-describedby="status_e5f6d3d292a5acc34c60_2_1">
+        <legend id="e5f6d3d292a5acc34c60_2_1-legend" class="response-fieldset-legend field-group-hd">С помощью какой функции осуществляется перемещение курсора на LCD дисплее:</legend>
+
+          <div class="field">
+            <input type="radio" name="input_e5f6d3d292a5acc34c60_2_1" id="input_e5f6d3d292a5acc34c60_2_1_choice_0" class="field-input input-radio" value="choice_0"/><label id="e5f6d3d292a5acc34c60_2_1-choice_0-label" for="input_e5f6d3d292a5acc34c60_2_1_choice_0" class="response-label field-label label-inline" aria-describedby="status_e5f6d3d292a5acc34c60_2_1"> lcd.print()
+            </label>
+          </div>
+
+          <div class="field">
+            <input type="radio" name="input_e5f6d3d292a5acc34c60_2_1" id="input_e5f6d3d292a5acc34c60_2_1_choice_1" class="field-input input-radio" value="choice_1"/><label id="e5f6d3d292a5acc34c60_2_1-choice_1-label" for="input_e5f6d3d292a5acc34c60_2_1_choice_1" class="response-label field-label label-inline" aria-describedby="status_e5f6d3d292a5acc34c60_2_1"> lcd.clear()
+            </label>
+          </div>
+
+          <div class="field">
+            <input type="radio" name="input_e5f6d3d292a5acc34c60_2_1" id="input_e5f6d3d292a5acc34c60_2_1_choice_2" class="field-input input-radio submitted" value="choice_2" checked="true"/><label id="e5f6d3d292a5acc34c60_2_1-choice_2-label" for="input_e5f6d3d292a5acc34c60_2_1_choice_2" class="response-label field-label label-inline choicegroup_correct" aria-describedby="status_e5f6d3d292a5acc34c60_2_1"> lcd.setCursor()
+            </label>
+          </div>
+        <span id="answer_e5f6d3d292a5acc34c60_2_1"/>
+    </fieldset>
+    <div class="indicator-container">
+
+
+<span class="status correct" id="status_e5f6d3d292a5acc34c60_2_1" data-tooltip="This answer is correct.">
+  <span class="sr">correct</span><span class="status-icon" aria-hidden="true"/>
+</span>
+    </div>
+</div></div>
+</div>
+  <div class="action">
+    <input type="hidden" name="problem_id" value="Упражнение" />
+
+    <div class="problem-action-buttons-wrapper">
+      <span class="problem-action-button-wrapper">
+          <button type="button" class="save problem-action-btn btn-link btn-small" data-value="Save">
+              <span aria-hidden="true">Save</span>
+              <span class="sr">Save your answer</span>
+          </button>
+      </span>
+    </div>
+    <div class="submit-attempt-container">
+      <button type="button" class="submit btn-brand" data-submitting="Submitting" data-value="Submit" data-should-enable-submit-button="True" aria-describedby="submission_feedback_e5f6d3d292a5acc34c60" >
+          <span class="submit-label">Submit</span>
+      </button>
+
+      <div class="submission-feedback " id="submission_feedback_e5f6d3d292a5acc34c60">
+          You have used 1 of 2 attempts
+        <span class="sr">Some problems have options such as save, reset, hints, or show answer. These options follow the Submit button.</span>
+      </div>
+    </div>
+  </div>
+
+<div class="notification warning notification-gentle-alert
+      is-hidden"
+     tabindex="-1">
+    <span class="icon fa fa-exclamation-circle" aria-hidden="true"></span>
+    <span class="notification-message" aria-describedby="e5f6d3d292a5acc34c60-problem-title">
+    </span>
+    <div class="notification-btn-wrapper">
+        <button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button>
+    </div>
+</div>
+
+<div class="notification warning notification-save
+      is-hidden"
+     tabindex="-1">
+    <span class="icon fa fa-save" aria-hidden="true"></span>
+    <span class="notification-message" aria-describedby="e5f6d3d292a5acc34c60-problem-title">None
+    </span>
+    <div class="notification-btn-wrapper">
+        <button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button>
+    </div>
+</div>
+
+<div class="notification general notification-show-answer
+      is-hidden"
+     tabindex="-1">
+    <span class="icon fa fa-info-circle" aria-hidden="true"></span>
+    <span class="notification-message" aria-describedby="e5f6d3d292a5acc34c60-problem-title">Answers are displayed within the problem
+    </span>
+    <div class="notification-btn-wrapper">
+        <button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button>
+    </div>
+</div>
+
+</div>
+
+<script>
+    function emit_event(message) {
+        parent.postMessage(message, '*');
+    }
+</script>
+" data-graded="True">
+
+<h3 class="hd hd-3 problem-header" id="e5f6d3d292a5acc34c60-problem-title" aria-describedby="block-v1:ITMOUniversity+IOT+fall_2023_ITMO_bac+type@problem+block@e5f6d3d292a5acc34c60-problem-progress" tabindex="-1">
+  Упражнение
+</h3>
+
+<div class="problem-progress" id="block-v1:ITMOUniversity+IOT+fall_2023_ITMO_bac+type@problem+block@e5f6d3d292a5acc34c60-problem-progress">1/1 point (graded)</div>
+
+<div class="problem">
+  <div>
+<div class="wrapper-problem-response" tabindex="-1" aria-label="Question 1" role="group"><div class="choicegroup capa_inputtype" id="inputtype_e5f6d3d292a5acc34c60_2_1">
+    <fieldset aria-describedby="status_e5f6d3d292a5acc34c60_2_1">
+        <legend id="e5f6d3d292a5acc34c60_2_1-legend" class="response-fieldset-legend field-group-hd">С помощью какой функции осуществляется перемещение курсора на LCD дисплее:</legend>
+
+          <div class="field">
+            <input type="radio" name="input_e5f6d3d292a5acc34c60_2_1" id="input_e5f6d3d292a5acc34c60_2_1_choice_0" class="field-input input-radio" value="choice_0"><label id="e5f6d3d292a5acc34c60_2_1-choice_0-label" for="input_e5f6d3d292a5acc34c60_2_1_choice_0" class="response-label field-label label-inline" aria-describedby="status_e5f6d3d292a5acc34c60_2_1"> lcd.print()
+            </label>
+          </div>
+
+          <div class="field">
+            <input type="radio" name="input_e5f6d3d292a5acc34c60_2_1" id="input_e5f6d3d292a5acc34c60_2_1_choice_1" class="field-input input-radio" value="choice_1"><label id="e5f6d3d292a5acc34c60_2_1-choice_1-label" for="input_e5f6d3d292a5acc34c60_2_1_choice_1" class="response-label field-label label-inline" aria-describedby="status_e5f6d3d292a5acc34c60_2_1"> lcd.clear()
+            </label>
+          </div>
+
+          <div class="field">
+            <input type="radio" name="input_e5f6d3d292a5acc34c60_2_1" id="input_e5f6d3d292a5acc34c60_2_1_choice_2" class="field-input input-radio submitted" value="choice_2" checked="true"><label id="e5f6d3d292a5acc34c60_2_1-choice_2-label" for="input_e5f6d3d292a5acc34c60_2_1_choice_2" class="response-label field-label label-inline choicegroup_correct" aria-describedby="status_e5f6d3d292a5acc34c60_2_1"> lcd.setCursor()
+            </label>
+          </div>
+        <span id="answer_e5f6d3d292a5acc34c60_2_1"></span>
+    </fieldset>
+<div class="indicator-container">
+<span class="status correct" id="status_e5f6d3d292a5acc34c60_2_1" data-tooltip="This answer is correct.">
+  <span class="sr">correct</span><span class="status-icon" aria-hidden="true"></span>
+</span>
+
+<div class="notification warning notification-gentle-alert
+      is-hidden" tabindex="-1">
+    <span class="icon fa fa-exclamation-circle" aria-hidden="true"></span>
+    <span class="notification-message" aria-describedby="e5f6d3d292a5acc34c60-problem-title">
+    </span>
+    <div class="notification-btn-wrapper">
+        <button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button>
+    </div>
+</div>
+
+<script>
+    function emit_event(message) {
+        parent.postMessage(message, '*');
+    }
+</script>
+</div>
+```
+
+## check sequence
+1. /event (event_type: problem_check)
+    - указывается courserun_key (course-v1:ITMOUniversity+IOT+fall_2023_ITMO_bac)
+    - event событие (input_e5f6d3d292a5acc34c60_2_1=choice_2) - идентификатор блока и ответ
+    - page - полная ссылка на страницу
+в ответ: success
+2. .../problem_check
+    - input_e5f6d3d292a5acc34c60_2_1	"choice_2"
+# response
+{
+  "success": "incorrect", <- все что нас интересует. Должно быть correct
+  "contents": "\n\n\n\n<h3 class=\"hd hd-3 problem-header\" id=\"ff56b14e6efde3894ac6-problem-title\" aria-describedby=\"block-v1:ITMOUniversity+IOT+fall_2023_ITMO_bac+type@problem+block@ff56b14e6efde3894ac6-problem-progress\" tabindex=\"-1\">\n  Упражнение\n</h3>\n\n<div class=\"problem-progress\" id=\"block-v1:ITMOUniversity+IOT+fall_2023_ITMO_bac+type@problem+block@ff56b14e6efde3894ac6-problem-progress\"></div>\n\n<div class=\"problem\">\n  <div>\n<div class=\"wrapper-problem-response\" tabindex=\"-1\" aria-label=\"Question 1\" role=\"group\"><div class=\"choicegroup capa_inputtype\" id=\"inputtype_ff56b14e6efde3894ac6_2_1\">\n    <fieldset aria-describedby=\"status_ff56b14e6efde3894ac6_2_1\">\n        <legend id=\"ff56b14e6efde3894ac6_2_1-legend\" class=\"response-fieldset-legend field-group-hd\">С помощью какой функции можно выставлять задержку в выполнении программы:</legend>\n          \n          <div class=\"field\">\n            <input type=\"radio\" name=\"input_ff56b14e6efde3894ac6_2_1\" id=\"input_ff56b14e6efde3894ac6_2_1_choice_0\" class=\"field-input input-radio\" value=\"choice_0\"/><label id=\"ff56b14e6efde3894ac6_2_1-choice_0-label\" for=\"input_ff56b14e6efde3894ac6_2_1_choice_0\" class=\"response-label field-label label-inline\" aria-describedby=\"status_ff56b14e6efde3894ac6_2_1\"> pause()\n            </label>\n          </div>\n          \n          <div class=\"field\">\n            <input type=\"radio\" name=\"input_ff56b14e6efde3894ac6_2_1\" id=\"input_ff56b14e6efde3894ac6_2_1_choice_1\" class=\"field-input input-radio\" value=\"choice_1\"/><label id=\"ff56b14e6efde3894ac6_2_1-choice_1-label\" for=\"input_ff56b14e6efde3894ac6_2_1_choice_1\" class=\"response-label field-label label-inline\" aria-describedby=\"status_ff56b14e6efde3894ac6_2_1\"> delay()\n            </label>\n          </div>\n          \n          <div class=\"field\">\n            <input type=\"radio\" name=\"input_ff56b14e6efde3894ac6_2_1\" id=\"input_ff56b14e6efde3894ac6_2_1_choice_2\" class=\"field-input input-radio submitted\" value=\"choice_2\" checked=\"true\"/><label id=\"ff56b14e6efde3894ac6_2_1-choice_2-label\" for=\"input_ff56b14e6efde3894ac6_2_1_choice_2\" class=\"response-label field-label label-inline choicegroup_incorrect\" aria-describedby=\"status_ff56b14e6efde3894ac6_2_1\"> sleep()\n            </label>\n          </div>\n        <span id=\"answer_ff56b14e6efde3894ac6_2_1\"/>\n    </fieldset>\n    <div class=\"indicator-container\">\n          \n\n<span class=\"status incorrect\" id=\"status_ff56b14e6efde3894ac6_2_1\" data-tooltip=\"This answer is incorrect.\">\n  <span class=\"sr\">incorrect</span><span class=\"status-icon\" aria-hidden=\"true\"/>\n</span>\n\n    </div>\n</div></div>\n</div>\n  <div class=\"action\">\n    <input type=\"hidden\" name=\"problem_id\" value=\"Упражнение\" />\n\n    <div class=\"problem-action-buttons-wrapper\">\n    </div>\n    <div class=\"submit-attempt-container\">\n      <button type=\"button\" class=\"submit btn-brand\" data-submitting=\"Submitting\" data-value=\"Submit\" data-should-enable-submit-button=\"False\" aria-describedby=\"submission_feedback_ff56b14e6efde3894ac6\" disabled>\n          <span class=\"submit-label\">Submit</span>\n      </button>\n\n      <div class=\"submission-feedback \" id=\"submission_feedback_ff56b14e6efde3894ac6\">\n          You have used 2 of 2 attempts\n        <span class=\"sr\">Some problems have options such as save, reset, hints, or show answer. These options follow the Submit button.</span>\n      </div>\n    </div>\n  </div>\n    \n\n\n<div class=\"notification warning notification-gentle-alert\n      is-hidden\"\n     tabindex=\"-1\">\n    <span class=\"icon fa fa-exclamation-circle\" aria-hidden=\"true\"></span>\n    <span class=\"notification-message\" aria-describedby=\"ff56b14e6efde3894ac6-problem-title\">\n    </span>\n    <div class=\"notification-btn-wrapper\">\n        <button type=\"button\" class=\"btn btn-default btn-small notification-btn review-btn sr\">Review</button>\n    </div>\n</div>\n\n            \n\n\n<div class=\"notification error notification-submit\n      \"\n     tabindex=\"-1\">\n    <span class=\"icon fa fa-close\" aria-hidden=\"true\"></span>\n    <span class=\"notification-message\" aria-describedby=\"ff56b14e6efde3894ac6-problem-title\">Incorrect (0/1 point)\n    </span>\n    <div class=\"notification-btn-wrapper\">\n        <button type=\"button\" class=\"btn btn-default btn-small notification-btn review-btn sr\">Review</button>\n    </div>\n</div>\n\n    \n\n\n<div class=\"notification warning notification-save\n      is-hidden\"\n     tabindex=\"-1\">\n    <span class=\"icon fa fa-save\" aria-hidden=\"true\"></span>\n    <span class=\"notification-message\" aria-describedby=\"ff56b14e6efde3894ac6-problem-title\">None\n    </span>\n    <div class=\"notification-btn-wrapper\">\n        <button type=\"button\" class=\"btn btn-default btn-small notification-btn review-btn sr\">Review</button>\n    </div>\n</div>\n\n    \n    \n\n\n<div class=\"notification general notification-show-answer\n      is-hidden\"\n     tabindex=\"-1\">\n    <span class=\"icon fa fa-info-circle\" aria-hidden=\"true\"></span>\n    <span class=\"notification-message\" aria-describedby=\"ff56b14e6efde3894ac6-problem-title\">Answers are displayed within the problem\n    </span>\n    <div class=\"notification-btn-wrapper\">\n        <button type=\"button\" class=\"btn btn-default btn-small notification-btn review-btn sr\">Review</button>\n    </div>\n</div>\n\n</div>\n\n<script>\n    function emit_event(message) {\n        parent.postMessage(message, '*');\n    }\n</script>\n",
+  "progress_changed": true,
+  "current_score": 0,
+  "total_possible": 1,
+  "attempts_used": 2
+}
+3. event
+
+"class=problem"
+/html/body/div[4]/div/section/main/div/div/div[2]/div/div/div[1]/div/div/div[2]/div[1]/div/div/fieldset/div[1]
+
+
+### Multiple answers:
+# request:
+input_23a917148e343de75677_2_1%5B%5D=choice_0&input_23a917148e343de75677_2_1%5B%5D=choice_5&input_23a917148e343de75677_2_1%5B%5D=choice_7
+# clean-uped request
+input_23a917148e343de75677_2_1=choice_0 &
+input_23a917148e343de75677_2_1=choice_5 &
+input_23a917148e343de75677_2_1=choice_7
+
+
+# html:
+
+<input type="checkbox" name="input_23a917148e343de75677_2_1[]" id="input_23a917148e343de75677_2_1_choice_0" class="field-input input-checkbox submitted" value="choice_0" checked="true">
+
+
+### Many questions:
+input_3efc4de4e68b7f2ad024_2_1=2463571&input_3efc4de4e68b7f2ad024_3_1%5B%5D=choice_1&input_3efc4de4e68b7f2ad024_3_1%5B%5D=choice_2&input_3efc4de4e68b7f2ad024_4_1=choice_0&input_3efc4de4e68b7f2ad024_5_1=choice_0&input_3efc4de4e68b7f2ad024_6_1=choice_2&input_3efc4de4e68b7f2ad024_7_1=choice_0&input_3efc4de4e68b7f2ad024_8_1%5B%5D=choice_0&input_3efc4de4e68b7f2ad024_8_1%5B%5D=choice_2&input_3efc4de4e68b7f2ad024_9_1%5B%5D=choice_0&input_3efc4de4e68b7f2ad024_9_1%5B%5D=choice_1&input_3efc4de4e68b7f2ad024_9_1%5B%5D=choice_2&input_3efc4de4e68b7f2ad024_10_1=choice_0&input_3efc4de4e68b7f2ad024_11_1=choice_1
