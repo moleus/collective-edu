@@ -1,0 +1,10 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "background.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/firefox-webext-browser": "^120.0.3",
+    "typescript": "^5.4.5"
+  }
+}
