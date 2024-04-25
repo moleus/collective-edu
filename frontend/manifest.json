@@ -4,12 +4,18 @@
     "version": "1.0",
     "description": "Checks OpenEdu requests and responses",
     "permissions": [
-        "webRequest"
+        "webRequest",
+        "webRequestBlocking",
+        "webRequestFilterResponse",
+        "bookmarks",
+        "webNavigation",
+        "contextMenus"
     ],
     "host_permissions": [
         "https://courses.openedu.ru/",
+        "https://apps.openedu.ru/",
         "*://developer.mozilla.org/*",
-        "*://*.example.org/*"
+        "<all_urls>"
     ],
     "web_accessible_resources": [
         {
@@ -19,8 +25,7 @@
     ],
     "background": {
         "scripts": ["background.js"],
-        "service_worker": "background.js",
-        "persistent": false
+        "type": "module"
     },
     "browser_specific_settings": {
         "gecko": {
