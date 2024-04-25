@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/webextension-polyfill": "^0.10.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "webextension-polyfill": "^0.11.0"
   },
   "devDependencies": {
     "@types/firefox-webext-browser": "^120.0.3",
@@ -24,6 +26,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "typescript": "^5.2.2",
-    "vite": "^5.2.0"
+    "vite": "^5.2.0",
+    "vite-plugin-web-extension": "^4.1.3"
   }
 }
