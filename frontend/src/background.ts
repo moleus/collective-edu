@@ -2,13 +2,17 @@ import browser from "webextension-polyfill";
 
 const openeduProblemCheckUrls: string[] = ["https://courses.openedu.ru/courses/*/problem_check"];
 
+
 const interceptRequest = (details: browser.WebRequest.OnBeforeRequestDetailsType) => {
+    onRequest
+    details.requestBody
     console.log("Request URL: " + details.url);
 };
 
 browser.webRequest.onBeforeRequest.addListener(
     interceptRequest,
-    { urls: openeduProblemCheckUrls }
+    { urls: openeduProblemCheckUrls },
+    ["requestBody"]
 );
 
 const interceptResponse = (details: browser.WebRequest.OnCompletedDetailsType) => {
@@ -22,10 +26,16 @@ browser.webRequest.onCompleted.addListener(
     { urls: openeduProblemCheckUrls }
 );
 
-// interface OpenEduCheckResponse {
-//     status: string;
-//     message: string;
-// }
+
+const parseResponse = (body: string): OpenEduCheckResponse => {
+    return JSON.parse(body) as OpenEduCheckResponse
+}
+
+const onRequest
+
+const onResponse = (body: string): void => {
+    const data = parseResponse(body);
+}
 
 function listener(details: browser.WebRequest.OnBeforeRequestDetailsType) {
     let filter = browser.webRequest.filterResponseData(details.requestId);
@@ -34,6 +44,7 @@ function listener(details: browser.WebRequest.OnBeforeRequestDetailsType) {
 
     filter.ondata = (event: browser.WebRequest.StreamFilterEventData) => {
         let response = decoder.decode(event.data, { stream: true });
+        onResponse(response);
         console.log(`Response content: ${response}`);
         filter.write(encoder.encode(response));
         filter.disconnect();
