@@ -1,4 +1,3 @@
-import {privacy} from "webextension-polyfill";
 import {QuestionStorage} from "./QuestionStorage";
 import {ProblemHtmlParserImpl} from "./AnswerChecker";
 
