@@ -1,10 +1,8 @@
-interface ProblemCheckAnswer {
-    fieldName: string;
-    fieldValue: string;
-}
+type QuestionId = string;
+type QuestionAnswer = string;
 
 interface ProblemCheckRequest {
-    answers: ProblemCheckAnswer[];
+    answers: Record<QuestionId, QuestionAnswer>
 }
 
 interface ProblemCheckResponse {
