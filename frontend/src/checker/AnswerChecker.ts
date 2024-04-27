@@ -54,7 +54,7 @@ export class ProblemHtmlParserImpl implements AnswerChecker {
             return inputId
         }
 
-        const choiceGroupId = `${questionIdWithoutPrefix}_${answer}`
+        const choiceGroupId = `input_${questionIdWithoutPrefix}_${answer}`
         if (this.doc.getElementById(choiceGroupId)) {
             return choiceGroupId
         }
