@@ -1,10 +1,10 @@
 import browser from "webextension-polyfill";
 import {LocalStorage} from "./checker/QuestionStorage";
-
-const globalLocalStorage = new LocalStorage()
-const globalDataProbcessor = new MainProcessor(globalLocalStorage)
+import {MainProcessor} from "./checker/AllDataProcessor";
 
 const openeduProblemCheckUrls: string[] = ["https://courses.openedu.ru/courses/*/problem_check"];
+const globalLocalStorage = new LocalStorage()
+const globalDataProbcessor = new MainProcessor(globalLocalStorage)
 
 function listener(details: browser.WebRequest.OnBeforeRequestDetailsType) {
     const url = details.url

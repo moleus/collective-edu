@@ -1,5 +1,6 @@
 import {privacy} from "webextension-polyfill";
 import {QuestionStorage} from "./QuestionStorage";
+import {ProblemHtmlParserImpl} from "./AnswerChecker";
 
 interface ProcessingData {
     url: string;
@@ -21,8 +22,17 @@ export class MainProcessor implements ProblemCheckRequestProcessor {
     constructor(private answersStorage : QuestionStorage) {}
 
     process(data: ProcessingData): void {
+        const answersBlock : ProcessedQuestionAnswer[] = []
+        const parsedRequest = this.parseRequest(data.requestBody)
+        const parsedResponse = this.parseResponse(data.responseBody)
+        const responseHtml = parsedResponse.contensts
+        const answerChecker = new ProblemHtmlParserImpl(responseHtml)
 
-        this.answersStorage.save(answer)
+        for (let [questionId, answer] of Object.entries(parsedRequest.answers)) {
+            const isCorrect = answerChecker.isAnswerCorrect(questionId)
+            answersBlock.push({id: questionId, value: answer, isCorrect})
+        }
+        this.answersStorage.save(...answersBlock)
     }
 
     private parseResponse(responseBody: string): ProblemCheckResponse {
