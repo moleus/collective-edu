@@ -6,6 +6,9 @@ export class ProblemHtmlParserImpl implements AnswerChecker {
     private doc: Document;
 
     constructor(htmlBody: string) {
+        if (!htmlBody) {
+            throw new Error("htmlBody is empty")
+        }
         const parser = new DOMParser()
         this.doc = parser.parseFromString(htmlBody, "text/html")
     }
@@ -23,6 +26,28 @@ export class ProblemHtmlParserImpl implements AnswerChecker {
         }
         console.debug(`New question id: ${normQuestionId}`)
 
+        const status = this.checkStatusUsingAriaLabel(questionId)
+        if (status !== null) {
+            return status
+        }
+        return this.checkStatusUsingLabel(normQuestionId)
+    }
+
+    // get label where 'for' attribute equals to questionId and check class 'choicegroup_correct'
+    private checkStatusUsingLabel(normQuestionId: QuestionId): boolean | null {
+        const label = this.doc.querySelector(`label[for="${normQuestionId}"]`)
+        if (!label) {
+            console.error(`Can't find label with 'for' attribute equals to '${normQuestionId}' in html`, this.doc)
+            return null
+        }
+        if (!label.classList.contains("choicegroup_correct") && !label.classList.contains("choicegroup_incorrect")) {
+            console.error(`Label with 'for' attribute equals to '${normQuestionId}' must contain 'choicegroup_correct' or 'choicegroup_incorrect' class`, label)
+            return null
+        }
+        return label.classList.contains("choicegroup_correct")
+    }
+
+    private checkStatusUsingAriaLabel(normQuestionId: QuestionId): boolean | null {
         const questionEl = this.doc.getElementById(normQuestionId)
         if (!questionEl) {
             console.error(`Can't find question with id '${normQuestionId}' in html`, this.doc)
@@ -30,7 +55,7 @@ export class ProblemHtmlParserImpl implements AnswerChecker {
         }
         const statusElId = questionEl.getAttribute("aria-describedby")
         if (!statusElId) {
-            console.error(`Can't find attribute 'ariadescribedby' for element '${normQuestionId}' in html`, this.doc)
+            console.error(`Can't find attribute 'aria-describedby' for element '${normQuestionId}' in html`, this.doc)
             return null
         }
         const statusEl = this.doc.getElementById(statusElId)

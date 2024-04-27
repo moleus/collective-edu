@@ -7,7 +7,7 @@ interface ProblemCheckRequest {
 
 interface ProblemCheckResponse {
     status: string;
-    contensts: string;
+    contents: string;
     progress_changed: boolean;
     current_score: number; // number of correct points
     total_possible: number; // total possible points

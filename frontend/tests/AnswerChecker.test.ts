@@ -31,7 +31,17 @@ describe('AnswerChecker', () => {
         expect(result).toBeTruthy()
     })
 
+    it('should return true if label near question element has correct class', () => {
+        const parser = new ProblemHtmlParserImpl('<input id="input_123"><label for="input_123" class="random-class b choicegroup_correct"></label>')
+        const result = parser.isAnswerCorrect('input_123', '1')
+        expect(result).toBeTruthy()
+    })
 
+    it('should return false if label near question element has incorrect class', () => {
+        const parser = new ProblemHtmlParserImpl('<input id="input_123"><label for="input_123" class="random-class b choicegroup_incorrect"></label>')
+        const result = parser.isAnswerCorrect('input_123', '1')
+        expect(result).toBeFalsy()
+    })
 })
 
 describe('getNormalizedQuestionId', () => {
