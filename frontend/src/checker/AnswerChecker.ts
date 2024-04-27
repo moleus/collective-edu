@@ -55,7 +55,7 @@ export class ProblemHtmlParserImpl implements AnswerChecker {
         }
         const statusElId = questionEl.getAttribute("aria-describedby")
         if (!statusElId) {
-            console.error(`Can't find attribute 'aria-describedby' for element '${normQuestionId}' in html`, this.doc)
+            console.debug(`Can't find attribute 'aria-describedby' for element '${normQuestionId}' in html`, this.doc)
             return null
         }
         const statusEl = this.doc.getElementById(statusElId)
