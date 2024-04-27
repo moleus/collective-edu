@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: Problem Solving API
+  version: 1.0.0
+  description: API for handling problem solving tasks
+servers:
+  - url: http://localhost:8080 # Change this to your server URL
+paths:
+  /solutions:
+    post:
+      summary: Submit a solution
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ProblemSolution'
+      responses:
+        '200':
+          description: Successful submission
+    get:
+      summary: Get solutions for tasks
+      parameters:
+        - name: taskIDs
+          in: query
+          description: Filter by task IDs
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProblemSolution'
+components:
+  schemas:
+    ProblemSolution:
+      type: object
+      required: [taskId, solution, isCorrect]
+      properties:
+        taskId:
+          $ref: '#/components/schemas/TaskId'
+        solution:
+          type: array
+          items:
+            type: string
+          maxItems: 20
+        isCorrect:
+          type: boolean
+    TaskId:
+      type: string
+      pattern: "input_[a-f0-9]+_[0-9]+_[0-9]+(_choice_[0-9]+)?"

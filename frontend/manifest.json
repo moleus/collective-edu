@@ -1,0 +1,53 @@
+{
+    "manifest_version": 3,
+    "name": "OpenEdu Checker",
+    "version": "1.0",
+    "description": "Checks OpenEdu requests and responses",
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "webRequestFilterResponse",
+        "bookmarks",
+        "webNavigation",
+        "contextMenus",
+        "storage"
+    ],
+    "optional_permissions": ["<all_urls>"],
+    "host_permissions": [
+        "https://courses.openedu.ru/",
+        "https://apps.openedu.ru/",
+        "*://developer.mozilla.org/*",
+        "http://127.0.0.1:8080/*",
+        "<all_urls>"
+    ],
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": {
+            "16": "public/vite.svg",
+            "24": "public/vite.svg",
+            "32": "public/vite.svg"
+        }
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["index.html"],
+            "matches": ["https://courses.openedu.ru/*"]
+        }
+    ],
+    "background": {
+        "scripts": ["src/background.ts"],
+        "type": "module"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "you@example.com",
+            "strict_min_version": "58.0"
+        }
+    },
+    "icons": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    }
+}
+

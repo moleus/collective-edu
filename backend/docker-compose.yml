@@ -1,0 +1,25 @@
+version: "3.7"
+
+# golang application and redis
+
+services:
+  api:
+    image: ghcr.io/moleus/collective-edu/collective-edu-ad9065903f005e2cb22802ecba97a87c
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_ADDR=redis:6379
+    networks:
+      - backend
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - backend
+
+networks:
+    backend:
+        driver: bridge
