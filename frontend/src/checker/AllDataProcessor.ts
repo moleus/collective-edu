@@ -28,7 +28,8 @@ export class MainProcessor implements ProblemCheckRequestProcessor {
         const answerChecker = new ProblemHtmlParserImpl(responseHtml)
 
         for (let [questionId, answer] of Object.entries(parsedRequest.answers)) {
-            const isCorrect = answerChecker.isAnswerCorrect(questionId)
+            const isCorrect = answerChecker.isAnswerCorrect(questionId, answer)
+            console.debug(`Answer is correct? ${isCorrect}`)
             if (isCorrect === null) {
                 console.log(`Failed to process qustion ${questionId} with answer ${answer}`)
                 return
@@ -43,7 +44,10 @@ export class MainProcessor implements ProblemCheckRequestProcessor {
     }
 
     private parseRequest(requestBody: Record<string, string>): ProblemCheckRequest {
-        return {answers: requestBody}
+        // remove [] at the end of key
+        const newBody = Object.fromEntries(Object.entries(requestBody).map(([question, answer]) => [question.replace('/\[\]/', ''), answer]))
+        console.debug(`Request: `, newBody)
+        return {answers: newBody}
     }
 }
 

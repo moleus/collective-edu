@@ -2,12 +2,6 @@ interface AnswerChecker {
     isAnswerCorrect(questionId: string, answer: QuestionAnswer): boolean | null;
 }
 
-enum InputType {
-    Unknown,
-    FormulaEquation,
-    ChoiceGroup,
-}
-
 export class ProblemHtmlParserImpl implements AnswerChecker {
     private doc: Document;
 
@@ -23,72 +17,50 @@ export class ProblemHtmlParserImpl implements AnswerChecker {
      4. Находим этот элемент по id. Читаем class, например - class="status incorrect" или class="status correct"
      */
     isAnswerCorrect(questionId: QuestionId, answer: QuestionAnswer): boolean | null {
-        const inputType = this.getInputType(questionId)
-        if (!inputType) {
+        const normQuestionId = this.getNormalizedQuestionId(questionId, answer)
+        if (!normQuestionId) {
             return null
         }
+        console.debug(`New question id: ${normQuestionId}`)
 
-        const modQuestionId = this.getQuestionIdBasedOnInputType(questionId, answer, inputType)
-
-        const questionEl = this.doc.getElementById(questionId)
+        const questionEl = this.doc.getElementById(normQuestionId)
         if (!questionEl) {
-            console.error(`Can't find question with id '${questionId}' in html`, this.doc)
-            return false
+            console.error(`Can't find question with id '${normQuestionId}' in html`, this.doc)
+            return null
         }
         const statusElId = questionEl.getAttribute("aria-describedby")
         if (!statusElId) {
-            console.error(`Can't find attribute 'ariadescribedby' for element '${questionId}' in html`, this.doc)
-            return false
+            console.error(`Can't find attribute 'ariadescribedby' for element '${normQuestionId}' in html`, this.doc)
+            return null
         }
         const statusEl = this.doc.getElementById(statusElId)
         if (!statusEl) {
             console.error(`Can't find status element with id '${statusElId}' in html`, this.doc)
-            return false
+            return null
         }
 
         if (!statusEl.classList.contains("status")) {
             console.error(`Status element with id '${statusElId}' must contain 'status' class`, statusEl)
+            return null
         }
         return statusEl.classList.contains("correct")
     }
 
-    /*
-     * find element with id inputtype_{questionId} and read class
-     */
-    private getInputType(questionId: QuestionId): InputType | null {
-        const inputTypeElId = `inputtype_${questionId}`
-        const inputTypeEl = this.doc.getElementById(inputTypeElId)
-        if (!inputTypeEl) {
-            console.error(`Can't find inputtype el with id '${inputTypeElId}' in html`, this.doc)
-            return null
+    getNormalizedQuestionId(questionId: QuestionId, answer: QuestionAnswer): QuestionId | null {
+        const questionIdWithoutPrefix = questionId.replace(/^input_/, '')
+
+        const inputId = `input_${questionIdWithoutPrefix}`
+        if (this.doc.getElementById(inputId)) {
+            return inputId
         }
 
-        const classes = inputTypeEl.classList
-        if (classes.length === 0) {
-            console.error(`No classes in element '${inputTypeElId}'`, inputTypeEl)
-            return null
+        const choiceGroupId = `${questionIdWithoutPrefix}_${answer}`
+        if (this.doc.getElementById(choiceGroupId)) {
+            return choiceGroupId
         }
-        switch (classes[0]) {
-            // TODO: more input types
-            case "choicegroup":
-                return InputType.ChoiceGroup
-            case "formulaequationinput":
-                return InputType.FormulaEquation
-            default:
-                return InputType.Unknown
-        }
-    }
 
-    private getQuestionIdBasedOnInputType(questionId: QuestionId, answer: QuestionAnswer, inputType: InputType) : QuestionId {
-        switch (inputType) {
-            case InputType.ChoiceGroup:
-                return `${questionId}_${answer}`
-            case InputType.FormulaEquation:
-                return questionId
-            case InputType.Unknown:
-                console.warn(`Question ${questionId} has unknown input type. Using unmodified`)
-                return questionId
-        }
+        console.error(`Can't find element with id '${inputId}' or '${choiceGroupId}' in html`, this.doc)
+        return null
     }
 }
 
