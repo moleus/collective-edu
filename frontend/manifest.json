@@ -9,7 +9,8 @@
         "webRequestFilterResponse",
         "bookmarks",
         "webNavigation",
-        "contextMenus"
+        "contextMenus",
+        "storage"
     ],
     "host_permissions": [
         "https://courses.openedu.ru/",

@@ -26,7 +26,7 @@ export class ProblemHtmlParserImpl implements AnswerChecker {
         }
         console.debug(`New question id: ${normQuestionId}`)
 
-        const status = this.checkStatusUsingAriaLabel(questionId)
+        const status = this.checkStatusUsingAriaLabel(normQuestionId)
         if (status !== null) {
             return status
         }
