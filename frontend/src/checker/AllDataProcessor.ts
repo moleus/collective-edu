@@ -29,6 +29,10 @@ export class MainProcessor implements ProblemCheckRequestProcessor {
 
         for (let [questionId, answer] of Object.entries(parsedRequest.answers)) {
             const isCorrect = answerChecker.isAnswerCorrect(questionId)
+            if (isCorrect === null) {
+                console.log(`Failed to process qustion ${questionId} with answer ${answer}`)
+                return
+            }
             answersBlock.push({id: questionId, value: answer, isCorrect})
         }
         this.answersStorage.save(...answersBlock)
