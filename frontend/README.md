@@ -1,30 +1,25 @@
-# React + TypeScript + Vite
+# Reverse protocol
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+/courses/course-v1:ITMOUniversity+APPSTAT+fall_2022_ITMO/xblock/block-v1:ITMOUniversity+APPSTAT+fall_2022_ITMO+type@problem+block@eaf0ec8e525342d2867f641f5d6ee9d0/handler/xmodule_handler/problem_show
 
-Currently, two official plugins are available:
+984b0b47faf45b2b05e02fd9f8b2ec0 - идентификатор задания или блока заданий, предположительно, у каждого студента свой. Если кнопка для отправки одна, то ID будет одинаковый. Отправляется как `input_eaf0ec8e525342d2867f641f5d6ee9d0_9_1: {ответ}`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Поиск ответов в html или в поле `content` в ответе на запрос.
 
-## Expanding the ESLint configuration
+1. Поиск элемента с id=input_f98963aef53647ef8c32c4652f9258a9_3_1
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## Задание с чекбоксами
+input_ca9acf0940402012f1fd_2_1[]=choice_0&input_ca9acf0940402012f1fd_2_1[]=choice_2&input_ca9acf0940402012f1fd_2_1[]=choice_3&input_ca9acf0940402012f1fd_2_1[]=choice_4
+- задание:
+    - id="input_ca9acf0940402012f1fd_2_1_choice_0"
+    - type=checkbox
+    - class=submitted - чекбокс выбран
+- корректность:
+    - id="ca9acf0940402012f1fd_2_1-choice_0-label"; class="choicegroup_correct"
+    - или for="{идентификатор задания}"
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Radio button
+input_822b2ab835e13c0a41ea_2_1=choice_1
+- type=radio checked=true
