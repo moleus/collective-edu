@@ -8,7 +8,6 @@
 
 1. Поиск элемента с id=input_f98963aef53647ef8c32c4652f9258a9_3_1
 
-
 ## Задание с чекбоксами
 input_ca9acf0940402012f1fd_2_1[]=choice_0&input_ca9acf0940402012f1fd_2_1[]=choice_2&input_ca9acf0940402012f1fd_2_1[]=choice_3&input_ca9acf0940402012f1fd_2_1[]=choice_4
 - задание:
@@ -23,3 +22,6 @@ input_ca9acf0940402012f1fd_2_1[]=choice_0&input_ca9acf0940402012f1fd_2_1[]=choic
 ## Radio button
 input_822b2ab835e13c0a41ea_2_1=choice_1
 - type=radio checked=true
+
+## Результат задания:
+id=status_a4c8d57dffcce9329b05_2_1 class="status correct"
