@@ -1,31 +1,34 @@
 import browser from "webextension-polyfill";
-import {LocalStorage} from "./checker/QuestionStorage";
+import {ServerStorage} from "./checker/QuestionStorage";
 import {MainProcessor} from "./checker/AllDataProcessor";
 
 const openeduProblemCheckUrls: string[] = ["https://courses.openedu.ru/courses/*/problem_check"];
-const globalLocalStorage = new LocalStorage()
-const globalDataProbcessor = new MainProcessor(globalLocalStorage)
+const globalServerStorage = new ServerStorage()
+const globalDataProbcessor = new MainProcessor(globalServerStorage)
 
 function listener(details: browser.WebRequest.OnBeforeRequestDetailsType) {
     const url = details.url
-    const requestBody = details.requestBody?.formData
+    const requestBody = details.requestBody?.formData as Record<string, string[]> | undefined
 
     const filter = browser.webRequest.filterResponseData(details.requestId);
-    const decoder = new TextDecoder("utf-8");
     const encoder = new TextEncoder();
 
+    const data : ArrayBuffer[] = []
     filter.ondata = (event: browser.WebRequest.StreamFilterEventData) => {
-        let responseBody = decoder.decode(event.data, { stream: true });
+        data.push(event.data)
+    };
+
+    filter.onstop = async () => {
+        const blob = new Blob(data, { type: "application/json" });
+        let responseBody = await blob.text();
         if (!requestBody) {
             console.log(`Request body is undefined for url: '${url}'. Skipping`)
         } else {
-            globalDataProbcessor.process({url, requestBody, responseBody})
+            await globalDataProbcessor.process({url, requestBody, responseBody})
         }
         filter.write(encoder.encode(responseBody));
         filter.disconnect();
-    };
-
-    return {};
+    }
 }
 
 browser.webRequest.onBeforeRequest.addListener(

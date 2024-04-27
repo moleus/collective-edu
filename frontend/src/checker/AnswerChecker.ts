@@ -3,7 +3,7 @@ interface AnswerChecker {
 }
 
 export class ProblemHtmlParserImpl implements AnswerChecker {
-    private doc: Document;
+    private readonly doc: Document;
 
     constructor(htmlBody: string) {
         if (!htmlBody) {

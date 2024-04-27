@@ -2,7 +2,7 @@ type QuestionId = string;
 type QuestionAnswer = string;
 
 interface ProblemCheckRequest {
-    answers: Record<QuestionId, QuestionAnswer>
+    answers: Map<QuestionId, QuestionAnswer[]>
 }
 
 interface ProblemCheckResponse {
