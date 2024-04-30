@@ -4,7 +4,7 @@ version: "3.7"
 
 services:
   api:
-    image: ghcr.io/moleus/collective-edu/collective-edu-ad9065903f005e2cb22802ecba97a87c
+    image: ghcr.io/moleus/collective-edu:latest
     ports:
       - "8080:8080"
     depends_on:

@@ -1,6 +1,7 @@
-import browser from "webextension-polyfill";
+import browser, {Runtime} from "webextension-polyfill";
 import {ServerStorage} from "./checker/QuestionStorage";
 import {MainProcessor} from "./checker/AllDataProcessor";
+import MessageSender = Runtime.MessageSender;
 
 const openeduProblemCheckUrls: string[] = ["https://courses.openedu.ru/courses/*/problem_check"];
 const globalServerStorage = new ServerStorage()
@@ -13,13 +14,13 @@ function listener(details: browser.WebRequest.OnBeforeRequestDetailsType) {
     const filter = browser.webRequest.filterResponseData(details.requestId);
     const encoder = new TextEncoder();
 
-    const data : ArrayBuffer[] = []
+    const data: ArrayBuffer[] = []
     filter.ondata = (event: browser.WebRequest.StreamFilterEventData) => {
         data.push(event.data)
     };
 
     filter.onstop = async () => {
-        const blob = new Blob(data, { type: "application/json" });
+        const blob = new Blob(data, {type: "application/json"});
         let responseBody = await blob.text();
         if (!requestBody) {
             console.log(`Request body is undefined for url: '${url}'. Skipping`)
@@ -33,6 +34,19 @@ function listener(details: browser.WebRequest.OnBeforeRequestDetailsType) {
 
 browser.webRequest.onBeforeRequest.addListener(
     listener,
-    { urls: openeduProblemCheckUrls},
+    {urls: openeduProblemCheckUrls},
     ["blocking", "requestBody"],
 );
+
+const handleMessage = (request: QuestionId[], _: MessageSender, senderResponse: any): true => {
+    Promise.all(request.map(id => globalServerStorage.get(id))).then(answers => {
+            console.log("Got answers", answers);
+            senderResponse(answers)
+        }
+    ).catch(e =>
+        console.error(`Failed to send request to server to get answers: ${e}`)
+    )
+    return true
+}
+
+browser.runtime.onMessage.addListener(handleMessage);

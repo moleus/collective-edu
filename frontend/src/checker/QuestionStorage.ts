@@ -50,6 +50,5 @@ export class ServerStorage implements QuestionStorage {
 
     async get(id: QuestionId): Promise<ProcessedQuestionAnswer[]> {
         console.log("Getting answers from server");
-        return fetch(SOLUTIONS_PATH + `?id=${id}`).then((r) => r.json()).catch((e) => console.error(e))
+        return fetch(SOLUTIONS_PATH + `?taskIDs=${id}`).then((r) => r.json()).catch((e) => console.error(e))
     }
-}
