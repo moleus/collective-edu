@@ -52,4 +52,3 @@ export class ServerStorage implements QuestionStorage {
         console.log("Getting answers from server");
         return fetch(SOLUTIONS_PATH + `?taskIDs=${id}`).then((r) => r.json()).catch((e) => console.error(e))
     }
-}
