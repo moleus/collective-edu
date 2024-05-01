@@ -1,6 +1,6 @@
 import browser, {Runtime} from "webextension-polyfill";
 import {ServerStorage} from "./checker/QuestionStorage";
-import {MainProcessor} from "./checker/AllDataProcessor";
+import {MainProcessor, ProcessedQuestionAnswer} from "./checker/AllDataProcessor";
 import MessageSender = Runtime.MessageSender;
 
 const openeduProblemCheckUrls: string[] = ["https://courses.openedu.ru/courses/*/problem_check"];
@@ -41,7 +41,8 @@ browser.webRequest.onBeforeRequest.addListener(
 const handleMessage = (request: QuestionId[], _: MessageSender, senderResponse: any): true => {
     Promise.all(request.map(id => globalServerStorage.get(id))).then(answers => {
             console.log("Got answers", answers);
-            senderResponse(answers)
+            const nonEmptyAnswers: ProcessedQuestionAnswer[] = answers.flat().filter(a => a)
+            senderResponse(nonEmptyAnswers)
         }
     ).catch(e =>
         console.error(`Failed to send request to server to get answers: ${e}`)
