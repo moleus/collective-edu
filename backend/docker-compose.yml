@@ -13,8 +13,6 @@ services:
       - REDIS_ADDR=redis:6379
     networks:
       - backend
-    volumes:
-      - /opt/redis-storage:/data
   redis:
     image: redis:alpine
     ports:
@@ -27,10 +25,12 @@ services:
       test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
     networks:
       - backend
+    volumes:
+      - /opt/redis-storage:/data
     deploy:
       resources:
         limits:
-          memory: 100m
+          memory: 256m
 
 networks:
     backend:
