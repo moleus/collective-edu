@@ -26,7 +26,8 @@ const addHint = (elementId: string, answer: string) => {
         console.log(`Found element with id: ${elementId}`)
         console.log(`Inserting answer: ${answer}`)
         const answerElement = document.createElement('div');
-        answerElement.textContent = `HINT (ANSWER): ${answer}`;
+        answerElement.textContent = `hint: ${answer} ⤴`;
+        answerElement.style.marginBottom = '10px'; // Add space below the div
         questionElement.parentNode?.appendChild(answerElement);
     }
 }
@@ -42,7 +43,7 @@ const insertAnswer = (answer: ProcessedQuestionAnswer) => {
     }
     if (answer.solution.some(isChoiceSolution)) {
         answer.solution.forEach(s => {
-            addHint(`${answer.taskId}_${s}`, "This is correct")
+            addHint(`${answer.taskId}_${s}`, "Answer above is correct.")
         })
     } else {
         addHint(answer.taskId, answer.solution[0])

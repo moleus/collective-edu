@@ -6,20 +6,15 @@
     "permissions": [
         "webRequest",
         "webRequestBlocking",
-        "webRequestFilterResponse",
-        "webNavigation",
-        "storage"
+        "webRequestFilterResponse"
     ],
-    "optional_permissions": ["<all_urls>"],
     "host_permissions": [
         "https://courses.openedu.ru/",
-        "https://apps.openedu.ru/",
-        "http://127.0.0.1:8080/*",
-        "<all_urls>"
+        "http://127.0.0.1:8080/*"
     ],
     "content_scripts": [
       {
-        "matches": ["*://courses.openedu.ru/*", "*://apps.openedu.ru/learning/course/*"],
+        "matches": ["*://courses.openedu.ru/*"],
         "js": ["src/content.ts"],
         "all_frames": true
       }
@@ -32,12 +27,6 @@
             "32": "public/vite.svg"
         }
     },
-    "web_accessible_resources": [
-        {
-            "resources": ["index.html"],
-            "matches": ["https://courses.openedu.ru/*"]
-        }
-    ],
     "background": {
         "scripts": ["src/background.ts"],
         "type": "module"
