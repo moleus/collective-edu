@@ -20,7 +20,7 @@ services:
     ports:
       - "6379:6379"
     command:
-      - bash
+      - sh
       - -c
       - redis-server --appendonly yes --maxmemory $$(( 1024 * 1024 * 256 )) --maxmemory-policy volatile-lru  # 256MB
     healthcheck:
