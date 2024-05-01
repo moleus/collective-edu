@@ -13,6 +13,8 @@ services:
       - REDIS_ADDR=redis:6379
     networks:
       - backend
+    volumes:
+      - /opt/redis-storage:/data
   redis:
     image: redis:alpine
     ports:
