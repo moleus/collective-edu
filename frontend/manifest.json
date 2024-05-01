@@ -14,22 +14,20 @@
         "http://185.112.102.15:8080/*"
     ],
     "content_scripts": [
-      {
-        "matches": ["*://courses.openedu.ru/*"],
-        "js": ["src/content.ts"],
-        "all_frames": true
-      }
-    ],
-    "action": {
-        "default_popup": "index.html",
-        "default_icon": {
-            "16": "public/vite.svg",
-            "24": "public/vite.svg",
-            "32": "public/vite.svg"
+        {
+            "matches": [
+                "*://courses.openedu.ru/*"
+            ],
+            "js": [
+                "src/content.ts"
+            ],
+            "all_frames": true
         }
-    },
+    ],
     "background": {
-        "scripts": ["src/background.ts"],
+        "scripts": [
+            "src/background.ts"
+        ],
         "type": "module"
     },
     "browser_specific_settings": {
@@ -39,9 +37,11 @@
         }
     },
     "icons": {
-        "16": "icon.png",
-        "48": "icon.png",
+        "16": "public/icon.jpg",
+        "48": "public/icon.jpg",
         "128": "icon.png"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
     }
 }
-
