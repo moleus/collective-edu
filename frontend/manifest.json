@@ -1,57 +1,47 @@
 {
     "manifest_version": 3,
-    "name": "OpenEdu Checker",
+    "name": "CollectiveEdu",
     "version": "1.0",
-    "description": "Checks OpenEdu requests and responses",
+    "description": "Provides hints on OpenEdu tasks",
     "permissions": [
         "webRequest",
         "webRequestBlocking",
-        "webRequestFilterResponse",
-        "webNavigation",
-        "storage"
+        "webRequestFilterResponse"
     ],
-    "optional_permissions": ["<all_urls>"],
     "host_permissions": [
         "https://courses.openedu.ru/",
-        "https://apps.openedu.ru/",
         "http://127.0.0.1:8080/*",
-        "<all_urls>"
+        "http://185.112.102.15:8080/*"
     ],
     "content_scripts": [
-      {
-        "matches": ["*://courses.openedu.ru/*", "*://apps.openedu.ru/learning/course/*"],
-        "js": ["src/content.ts"],
-        "all_frames": true
-      }
-    ],
-    "action": {
-        "default_popup": "index.html",
-        "default_icon": {
-            "16": "public/vite.svg",
-            "24": "public/vite.svg",
-            "32": "public/vite.svg"
-        }
-    },
-    "web_accessible_resources": [
         {
-            "resources": ["index.html"],
-            "matches": ["https://courses.openedu.ru/*"]
+            "matches": [
+                "*://courses.openedu.ru/*"
+            ],
+            "js": [
+                "src/content.ts"
+            ],
+            "all_frames": true
         }
     ],
     "background": {
-        "scripts": ["src/background.ts"],
+        "scripts": [
+            "src/background.ts"
+        ],
         "type": "module"
     },
     "browser_specific_settings": {
         "gecko": {
-            "id": "you@example.com",
+            "id": "moleus@collective-edu",
             "strict_min_version": "58.0"
         }
     },
     "icons": {
-        "16": "icon.png",
-        "48": "icon.png",
+        "16": "public/icon.jpg",
+        "48": "public/icon.jpg",
         "128": "icon.png"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
     }
 }
-
