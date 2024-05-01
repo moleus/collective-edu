@@ -1,6 +1,6 @@
 import {ProcessedQuestionAnswer} from "./AllDataProcessor";
 
-const SOLUTIONS_PATH = "http://127.0.0.1:8080/solutions";
+const SOLUTIONS_PATH = "http://185.112.102.15:8080/solutions";
 
 export interface QuestionStorage {
     save(...answers: ProcessedQuestionAnswer[]): Promise<void>;

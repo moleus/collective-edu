@@ -17,8 +17,18 @@ services:
     image: redis:alpine
     ports:
       - "6379:6379"
+    command:
+      - bash
+      - -c
+      - redis-server --appendonly yes --maxmemory $$(( $$( cat /sys/fs/cgroup/memory/memory.limit_in_bytes 2>/dev/null || cat /sys/fs/cgroup/memory.max ) - 100000000)) --maxmemory-policy volatile-lru
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
     networks:
       - backend
+    deploy:
+      resources:
+        limits:
+          memory: 100m
 
 networks:
     backend:
