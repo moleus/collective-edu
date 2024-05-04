@@ -11,6 +11,7 @@ services:
       - redis
     environment:
       - REDIS_ADDR=redis:6379
+      - GIN_MODE=release
     networks:
       - backend
   redis:
