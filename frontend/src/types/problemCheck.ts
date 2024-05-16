@@ -1,11 +1,11 @@
-type QuestionId = string;
-type QuestionAnswer = string;
+export type QuestionId = string;
+export type QuestionAnswer = string;
 
-interface ProblemCheckRequest {
+export interface ProblemCheckRequest {
     answers: Map<QuestionId, QuestionAnswer[]>
 }
 
-interface ProblemCheckResponse {
+export interface ProblemCheckResponse {
     status: string;
     contents: string;
     progress_changed: boolean;

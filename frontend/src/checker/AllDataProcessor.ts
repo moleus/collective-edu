@@ -1,6 +1,7 @@
 import {QuestionStorage} from "./QuestionStorage";
 import {ProblemHtmlParserImpl} from "./AnswerChecker";
 import {components} from "./apiSchema";
+import {ProblemCheckRequest, ProblemCheckResponse, QuestionAnswer, QuestionId} from "../types/problemCheck.ts";
 
 interface ProcessingData {
     url: string;
@@ -30,7 +31,7 @@ export class MainProcessor implements ProblemCheckRequestProcessor {
         const answerChecker = new ProblemHtmlParserImpl(parsedResponse.contents)
 
         for (let [questionId, answers] of parsedRequest.answers) {
-            const isCorrect = answers.every(a =>  answerChecker.isAnswerCorrect(questionId, a))
+            const isCorrect = answers.every(a => answerChecker.isAnswerCorrect(questionId, a))
             console.debug(`Answer is correct? ${isCorrect}`)
             if (isCorrect === null) {
                 console.error(`Failed to process question ${questionId} with answers ${answers}`)
@@ -52,17 +53,17 @@ export class MainProcessor implements ProblemCheckRequestProcessor {
 
     private static parseRequest = (requestBody: Record<string, string[]>): ProblemCheckRequest => {
         // remove [] at the end of key
-        let newBody: Map<QuestionId, QuestionAnswer[]> = new Map<QuestionId, QuestionAnswer[]>()
+        let questionToAnswers: Map<QuestionId, QuestionAnswer[]> = new Map<QuestionId, QuestionAnswer[]>()
         for (let [question, answer] of Object.entries(requestBody)) {
             let key = question.replace('/\[\]/', '');
-            if (newBody.get(key) === undefined) {
-                newBody.set(key, answer)
+            if (questionToAnswers.get(key) === undefined) {
+                questionToAnswers.set(key, answer)
             } else {
-                newBody.get(key)?.push(answer[0])
+                questionToAnswers.get(key)?.push(answer[0])
             }
         }
-        console.debug(`Request: `, newBody)
-        return {answers: newBody}
+        console.debug(`Request: `, questionToAnswers)
+        return {answers: questionToAnswers}
     }
 }
 

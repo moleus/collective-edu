@@ -2,6 +2,7 @@ import browser, {Runtime} from "webextension-polyfill";
 import {ServerStorage} from "./checker/QuestionStorage";
 import {MainProcessor, ProcessedQuestionAnswer} from "./checker/AllDataProcessor";
 import MessageSender = Runtime.MessageSender;
+import {QuestionId} from "./types/problemCheck.ts";
 
 const openeduProblemCheckUrls: string[] = ["https://courses.openedu.ru/courses/*/problem_check"];
 const globalServerStorage = new ServerStorage()

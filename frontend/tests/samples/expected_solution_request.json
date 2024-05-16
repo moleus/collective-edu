@@ -1,0 +1,74 @@
+[
+  {
+    "taskId": "input_a0b030d5bef8496eaf5971ccdb74cebb_2_1",
+    "solution": [
+      "choice_1"
+    ],
+    "isCorrect": true
+  },
+  {
+    "taskId": "input_a0b030d5bef8496eaf5971ccdb74cebb_3_1",
+    "solution": [
+      "choice_2"
+    ],
+    "isCorrect": true
+  },
+  {
+    "taskId": "input_a0b030d5bef8496eaf5971ccdb74cebb_4_1",
+    "solution": [
+      "choice_1"
+    ],
+    "isCorrect": true
+  },
+  {
+    "taskId": "input_a0b030d5bef8496eaf5971ccdb74cebb_5_1",
+    "solution": [
+      "choice_1"
+    ],
+    "isCorrect": true
+  },
+  {
+    "taskId": "input_a0b030d5bef8496eaf5971ccdb74cebb_6_1",
+    "solution": [
+      "choice_0"
+    ],
+    "isCorrect": true
+  },
+  {
+    "taskId": "input_a0b030d5bef8496eaf5971ccdb74cebb_7_1",
+    "solution": [
+      "choice_0",
+      "choice_1",
+      "choice_4"
+    ],
+    "isCorrect": true
+  },
+  {
+    "taskId": "input_a0b030d5bef8496eaf5971ccdb74cebb_8_1",
+    "solution": [
+      "choice_1"
+    ],
+    "isCorrect": true
+  },
+  {
+    "taskId": "input_a0b030d5bef8496eaf5971ccdb74cebb_9_1",
+    "solution": [
+      "choice_2"
+    ],
+    "isCorrect": true
+  },
+  {
+    "taskId": "input_a0b030d5bef8496eaf5971ccdb74cebb_10_1",
+    "solution": [
+      "choice_0"
+    ],
+    "isCorrect": true
+  },
+  {
+    "taskId": "input_a0b030d5bef8496eaf5971ccdb74cebb_11_1",
+    "solution": [
+      "choice_1"
+    ],
+    "isCorrect": true
+  }
+]

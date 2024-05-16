@@ -1,4 +1,6 @@
 import { ProblemHtmlParserImpl } from '../src/checker/AnswerChecker'
+import * as fs from 'fs';
+import * as path from 'path';
 
 describe('AnswerChecker', () => {
     it('should return null if question element not found', () => {
@@ -63,3 +65,25 @@ describe('getNormalizedQuestionId', () => {
         expect(result).toBeNull()
     })
 })
+
+describe('AnswerChecker', () => {
+    it('all answers should be correct', async () => {
+        // Read HTML from the file
+        const html = fs.readFileSync(path.resolve(__dirname, './samples/response_with_checkboxes.html'), 'utf-8');
+
+        // Read questions from the JSON file
+        const questions = JSON.parse(fs.readFileSync(path.resolve(__dirname, './samples/request_with_checkboxes.json'), 'utf-8'));
+
+        // Create a new ProblemHtmlParserImpl instance with the HTML
+        const parser = new ProblemHtmlParserImpl(html);
+
+        // Iterate over the questions and check if all answers are correct
+        for (let questionId in questions) {
+            const answers = questions[questionId];
+            for (let answer of answers) {
+                const isCorrect = parser.isAnswerCorrect(questionId, answer);
+                expect(isCorrect).toBeTruthy();
+            }
+        }
+    });
+});
