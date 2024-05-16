@@ -55,7 +55,7 @@ export class MainProcessor implements ProblemCheckRequestProcessor {
         // remove [] at the end of key
         let questionToAnswers: Map<QuestionId, QuestionAnswer[]> = new Map<QuestionId, QuestionAnswer[]>()
         for (let [question, answer] of Object.entries(requestBody)) {
-            let key = question.replace('/\[\]/', '');
+            let key = question.replace(/\[]/, '');
             if (questionToAnswers.get(key) === undefined) {
                 questionToAnswers.set(key, answer)
             } else {
