@@ -1,4 +1,5 @@
 import {ProcessedQuestionAnswer} from "./AllDataProcessor";
+import {QuestionId} from "../types/problemCheck.ts";
 
 const SOLUTIONS_PATH = "http://185.112.102.15:8080/solutions";
 

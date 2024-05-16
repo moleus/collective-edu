@@ -1,3 +1,5 @@
+import {QuestionAnswer, QuestionId} from "../types/problemCheck.ts";
+
 interface AnswerChecker {
     isAnswerCorrect(questionId: string, answer: QuestionAnswer): boolean | null;
 }

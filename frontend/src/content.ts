@@ -1,5 +1,6 @@
 import browser from "webextension-polyfill";
 import {ProcessedQuestionAnswer} from "./checker/AllDataProcessor.ts";
+import {QuestionId} from "./types/problemCheck.ts";
 
 console.log("Content script loaded");
 
