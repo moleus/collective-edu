@@ -1,3 +1,4 @@
+---
 version: "3.7"
 
 # golang application and redis
@@ -14,6 +15,7 @@ services:
       - GIN_MODE=release
     networks:
       - backend
+    user: "1000:1000"
   redis:
     image: redis:alpine
     ports:
@@ -23,7 +25,8 @@ services:
       - -c
       - redis-server --appendonly yes --maxmemory $$(( 1024 * 1024 * 256 )) --maxmemory-policy volatile-lru  # 256MB
     healthcheck:
-      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+    user: "1000:1000"
     networks:
       - backend
     volumes:
@@ -34,5 +37,5 @@ services:
           memory: 256m
 
 networks:
-    backend:
-        driver: bridge
+  backend:
+    driver: bridge
